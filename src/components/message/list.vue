@@ -1,11 +1,11 @@
 <template>
-        文章
+        
 </template>
     
 <script setup lang='ts'>
     
 </script>
     
-<style>
+<style lang="scss" scoped>
     
 </style>

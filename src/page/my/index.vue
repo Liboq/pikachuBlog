@@ -1,5 +1,5 @@
 <template>
-        文章
+        my
 </template>
     
 <script setup lang='ts'>

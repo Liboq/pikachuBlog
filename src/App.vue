@@ -2,10 +2,17 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Home from './page/home/index.vue'
+import NavContainer from './components/nav/index.vue'
 </script>
 
 <template>
-  <Home></Home>
+  <!-- <Home></Home> -->
+
+  
+  <div>
+    <router-view></router-view>
+  </div>
+
 </template>
 
 <style scoped>

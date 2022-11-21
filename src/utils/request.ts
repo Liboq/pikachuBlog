@@ -5,7 +5,7 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 type Result<T> = {
   status: number;
   message: string;
-  result: T;
+  data: T;
 };
 
 // 导出Request类，可以用来自定义传递配置来创建实例

@@ -1,10 +1,11 @@
 <template>
         <div class="nav-container">
             <div class="nav-content">
-                <div class="nav-item">首页 ></div>
-                <div class="nav-item">个人介绍 ></div>
-                <div class="nav-item">留言 ></div>
-                <div class="nav-item">图库 ></div>
+                <div class="nav-item" @click="goPage('/home')">首页 ></div>
+                <div class="nav-item" @click="goPage('/my')">个人介绍 ></div>
+                <div class="nav-item" @click="goPage('/markdown')">文章</div>
+                <div class="nav-item" @click="goPage('/message')">留言 ></div>
+                <div class="nav-item" @click="goPage('/gollery')">图库 ></div>
             </div>
             <div class="nav-other">
                 <div class="nav-other-item github-img"></div>
@@ -13,7 +14,9 @@
 </template>
     
 <script setup lang='ts'>
-    
+import { useRouter } from 'vue-router';
+const router = useRouter()
+    const goPage =(path: string) => router.push(path)
 </script>
     
 <style lang="scss" scoped>  
@@ -25,6 +28,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
     .nav-content{
         display: flex;
         justify-content: center;
