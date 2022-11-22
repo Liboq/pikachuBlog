@@ -17,6 +17,7 @@
 body {
   margin: 0;
   width: 100%;
+  background-color: #FCFBFB;
 }
 
 
@@ -27,7 +28,7 @@ body {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #FCFBFB;
   }
   a:hover {
     color: #747bff;

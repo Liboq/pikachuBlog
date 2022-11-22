@@ -1,22 +1,45 @@
 <template>
   <div>
-    <textarea v-model="value" :style="props.style" class="textarea-container"></textarea>
+    <textarea
+    @input="change"
+      :value="val"
+      :style="props.style"
+      class="textarea-container"
+    ></textarea>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-    const props = defineProps({
-        style:{
-            type:String,
-            default:''
-        },
-        value:{
-            type:String,
-            default:''
-        }
-    })
-    const value = ref(props.value)
+import { ref,watch } from 'vue';
+const props = defineProps({
+  style: {
+    type: String,
+    default: ''
+  },
+  title: {
+    type: String,
+    default: ''
+  },
+  modelValue: {
+    type: String,
+    default: ''
+  },
+  placeholder: {
+    type: String,
+    default: ''
+  }
+});
+const emit = defineEmits(['update:modelValue','blur'])
+const val = ref(props.modelValue)
+watch(()=> props.modelValue,()=>{
+    val.value = props.modelValue
+})
+const change = (e:any)=>{
+  console.log(e.target.value);
+  
+    val.value = e.target.value
+    emit('update:modelValue',e.target.value)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -28,7 +51,8 @@ import { ref } from 'vue';
   opacity: 1;
   border: 1px solid #d1d9b4;
   resize: none;
-  &:focus-visible{
+  padding: 5px;
+  &:focus-visible {
     outline: #b9bf8f auto 1px;
   }
 }

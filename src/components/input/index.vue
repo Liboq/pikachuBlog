@@ -1,7 +1,15 @@
 <template>
   <div class="input-container">
     <div class="input-container-title">{{ props.title }}</div>
-    <input @blur="(e)=>emit('blur',e)"  :placeholder="props.placeholder" @input="change" class="input-container-box" v-model="value" :style="props.style" type="text" />
+    <input
+      @blur="(e) => emit('blur', e)"
+      :placeholder="props.placeholder"
+      @input="change"
+      class="input-container-box"
+      :value="val"
+      :style="props.style"
+      type="text"
+    />
   </div>
 </template>
 
@@ -16,33 +24,36 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  value:{
-    type:String,
-    default: ""
+  modelValue: {
+    type: String,
+    default: ''
   },
-  placeholder:{
-    type:String,
-    default: ""
+  placeholder: {
+    type: String,
+    default: ''
   }
 });
-const emit = defineEmits(['change','blur'])
-const value = ref(props.value)
-watch(()=> props.value,()=>{
-    value.value = props.value
-})
-const change = (e:any)=>{
-    value.value = e.target.value
-    emit('change',e.target.value)
-}
+const emit = defineEmits(['update:modelValue', 'blur']);
+const val = ref(props.modelValue);
+watch(
+  () => props.modelValue,
+  () => {
+    val.value = props.modelValue;
+  }
+);
+const change = (e: any) => {
+  val.value = e.target.value;
+  emit('update:modelValue', e.target.value);
+};
 </script>
 
 <style lang="scss" scoped>
 .input-container {
-    box-sizing: border-box;
-    position: relative;
-    border-radius: 5px 5px 5px 5px;
-    display: flex;
-    width: 231px;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 5px 5px 5px 5px;
+  display: flex;
+  width: 231px;
   &-title {
     position: absolute;
     width: 63px;
@@ -61,10 +72,10 @@ const change = (e:any)=>{
     background: #d1d9b4;
     opacity: 1;
   }
-  input{
+  input {
     border: 1px #b9bf8f solid;
-    &:focus-visible{
-        outline:  #b9bf8f auto 1px;
+    &:focus-visible {
+      outline: #b9bf8f auto 1px;
     }
   }
 }

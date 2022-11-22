@@ -1,7 +1,7 @@
 <template>
   <div class="button-container">
     <button class="button-container-item">
-      <span class="button-container-text">提交评论</span>
+      <span class="button-container-text">{{name}}</span>
     </button>
   </div>
 </template>

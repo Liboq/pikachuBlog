@@ -7,15 +7,15 @@
       <div class="message-box-container-input-item">
         <Input
           @blur="(e) => getAvator(e)"
-          :value="QQName"
+          v-model="QQName"
           placeholder="QQ号"
           class="input-item"
           title="昵称"
         ></Input
-        ><Input class="input-item" :value="emailName" placeholder="必填" title="邮箱"></Input
-        ><Input class="input-item" placeholder="选填" title="网址"></Input>
+        ><Input class="input-item" v-model="emailName" placeholder="必填" title="邮箱"></Input
+        ><Input class="input-item" v-model="website" placeholder="选填" title="网址"></Input>
       </div>
-      <TextArea class="message-box-container-textarea"></TextArea>
+      <TextArea v-model="textValue" class="message-box-container-textarea"></TextArea>
     </div>
   </div>
   <div class="message-box-container-button">
@@ -33,6 +33,9 @@ const regQQ = /[1-9][0-9]{4,11}/;
 const defaultAvatar = localStorage.getItem('message-avator')||""
 const defaultEmail = localStorage.getItem('meassage-email')|| ""
 const QQName = ref('');
+const textValue = ref('');
+const website = ref('')
+const emit = defineEmits(['sendMessage'])
 const avatarImg = ref(defaultAvatar);
 const emailName = ref(defaultEmail);
 const getAvator = (e: any) => {
@@ -44,13 +47,34 @@ const getAvator = (e: any) => {
     }
 };
 const sendMessage =()=>{
+  if(textValue.value&&avatarImg.value&&emailName.value&&QQName.value){
+    const data = {
+    content: textValue.value,
+    imgUrl:avatarImg.value,
+    emailName:emailName.value,
+    mesName:QQName.value,
+    website:website.value,
+    date: new Date().getTime()
+  }
+  emit('sendMessage',data)
+  emailName.value = ''
+  website.value=''
+  textValue.value= ''
+  QQName.value =''
+  }
+  else{
+    console.log('请输入你的昵称和邮箱地址');
     
+  }
+
 }
 </script>
 
 <style lang="scss" scoped>
 .message-box-container {
   display: flex;
+  box-sizing: border-box;
+  justify-content: center;
   &-img {
     margin-right: 22px;
   }
@@ -69,7 +93,7 @@ const sendMessage =()=>{
   &-button {
     display: flex;
     justify-content: flex-end;
-    margin-right: 102px;
+    margin-right: 52px;
   }
 }
 </style>
