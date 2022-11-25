@@ -1,10 +1,31 @@
 {
   "id": "3220044",
-  "name": "toutiao",
+  "name": "demo",
   "font_family": "lbq",
   "css_prefix_text": "lbq-",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "765611",
+      "name": "消息",
+      "font_class": "message",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "1305451",
+      "name": "标签",
+      "font_class": "biaoqian",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "1314429",
+      "name": "眼睛",
+      "font_class": "yanjing",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
     {
       "icon_id": "1115048",
       "name": "箭头",

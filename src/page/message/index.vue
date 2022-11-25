@@ -31,8 +31,8 @@ const getAllMess = async()=>{
    console.log(res);
    const result = res.data
    const treeData = arrayToTree(result.data)
-   console.log(treeData);
    messageList.value = treeData
+   console.log(treeData);
 } 
 onMounted(()=>{
     getAllMess()

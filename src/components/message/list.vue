@@ -4,7 +4,7 @@
     <ListItem
       v-for="item in messageList"
       :listItem="item"
-      :key="item.id"
+      :key="item.mid"
     ></ListItem>
   </div>
 </template>
@@ -12,9 +12,18 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import ListItem from './listItem.vue';
+interface type {
+  content:string,
+  mid:  number,
+  mesName: string,
+  date: number,
+  children: {
+    type: Array<Object>
+  }
+};
 const  props = defineProps({
     messageList:{
-        type:Array,
+        type:Array<type>,
         default:[]
     }
 })

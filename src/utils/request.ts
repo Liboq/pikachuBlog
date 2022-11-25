@@ -102,9 +102,10 @@ export class Request {
 
   public get<T = any>(
     url: string,
+    data?: any,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<Result<T>>> {
-    return this.instance.get(url, config);
+    return this.instance.get(url,config);
   }
 
   public post<T = any>(

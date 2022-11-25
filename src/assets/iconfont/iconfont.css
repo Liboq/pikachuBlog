@@ -1,8 +1,8 @@
 @font-face {
   font-family: "lbq"; /* Project id 3220044 */
-  src: url('iconfont.woff2?t=1669007725367') format('woff2'),
-       url('iconfont.woff?t=1669007725367') format('woff'),
-       url('iconfont.ttf?t=1669007725367') format('truetype');
+  src: url('iconfont.woff2?t=1669345862550') format('woff2'),
+       url('iconfont.woff?t=1669345862550') format('woff'),
+       url('iconfont.ttf?t=1669345862550') format('truetype');
 }
 
 .lbq {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.lbq-message:before {
+  content: "\e630";
+}
+
+.lbq-biaoqian:before {
+  content: "\e63d";
+}
+
+.lbq-yanjing:before {
+  content: "\e615";
 }
 
 .lbq-jiantou-you:before {

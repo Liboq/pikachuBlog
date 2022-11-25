@@ -30,8 +30,10 @@ import Img from '../img/index.vue';
 import Button from '../button/index.vue';
 import { ref } from 'vue';
 const regQQ = /[1-9][0-9]{4,11}/;
+const regName = /^[a-zA-Z0-9_-]{1,10}$/
+const regEmail =  /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/
 const defaultAvatar = localStorage.getItem('message-avator')||""
-const defaultEmail = localStorage.getItem('meassage-email')|| ""
+const defaultEmail = localStorage.getItem('message-email')|| ""
 const QQName = ref('');
 const textValue = ref('');
 const website = ref('')
@@ -47,6 +49,14 @@ const getAvator = (e: any) => {
     }
 };
 const sendMessage =()=>{
+  if(!regName.test(QQName.value)) {
+    return console.log('请输入1到10位的昵称');
+    
+  }
+  if(!regEmail.test(emailName.value)){
+    return console.log('请输入正确的邮箱');
+  }
+
   if(textValue.value&&avatarImg.value&&emailName.value&&QQName.value){
     const data = {
     content: textValue.value,

@@ -13,15 +13,15 @@ const routes : Array<RouteRecordRaw> = [
                 component: () => import("../page/home/index.vue"), 
                  meta: {
                     title: '首页',
-                    hideMenu: true,
+                    hideMenu: false,
                   },
             },{
                 path: 'markdown',
                 name: 'markdown',
                 component: () => import('../page/markdown/index.vue'),
                 meta: {
-                    title: '文章',
-                    hideMenu: true,
+                    title: '文库',
+                    hideMenu: false,
                   },
             },
             {
@@ -30,7 +30,7 @@ const routes : Array<RouteRecordRaw> = [
                 component: ()=> import("../page/my/index.vue"),
                 meta: {
                     title: '我的',
-                    hideMenu: true,
+                    hideMenu: false,
                   },
             },
             {
@@ -39,7 +39,7 @@ const routes : Array<RouteRecordRaw> = [
                 component: ()=> import("../page/message/index.vue"),
                 meta: {
                     title: '留言',
-                    hideMenu: true,
+                    hideMenu: false,
                   },
             },  
             {
@@ -48,9 +48,20 @@ const routes : Array<RouteRecordRaw> = [
                 component: ()=> import("../page/gollery/index.vue"),
                 meta: {
                     title: '图库',
-                    hideMenu: true,
+                    hideMenu: false,
                   },
-            }
+            },
+            
+                {
+                    path:'article',
+                    name:'article',
+                    component: ()=> import("../page/article/index.vue"),
+                    meta: {
+                        title: '文章',
+                        hideMenu: false,
+                      },
+                }
+            
         ]
     },
 
