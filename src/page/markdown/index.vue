@@ -88,7 +88,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 5000px) {
   .markdown {
     margin: 0 auto;
     width: 820px;

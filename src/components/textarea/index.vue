@@ -44,7 +44,7 @@ const change = (e:any)=>{
 
 <style lang="scss" scoped>
 .textarea-container {
-  width: 882px;
+  width: 962px;
   height: 209px;
   background: #f6f6f6;
   border-radius: 10px 10px 10px 10px;

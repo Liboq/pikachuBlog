@@ -32,7 +32,7 @@ import { useRouter } from 'vue-router';
 </script>
 
 <style scoped lang="scss">
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 2000px) {
   .article-card {
     overflow: hidden;
     margin-bottom: 20px;

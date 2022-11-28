@@ -32,7 +32,7 @@ import { ref } from 'vue';
 const regQQ = /[1-9][0-9]{4,11}/;
 const regName = /^[a-zA-Z0-9_-]{1,10}$/
 const regEmail =  /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/
-const defaultAvatar = localStorage.getItem('message-avator')||""
+const defaultAvatar = localStorage.getItem('message-avator')||"https://pikachu-2022-1305579406.cos.ap-nanjing.myqcloud.com/pikachu.png"
 const defaultEmail = localStorage.getItem('message-email')|| ""
 const QQName = ref('');
 const textValue = ref('');

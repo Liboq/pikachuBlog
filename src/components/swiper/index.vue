@@ -13,7 +13,7 @@
     import SwiperItem from './item.vue'
     const activeIndex = ref(1)
     const imgList = [
-        {path:'/public/home-bgc.png'}
+        {path:'https://pikachu-2022-1305579406.cos.ap-nanjing.myqcloud.com/swiper/home-bgc.png'}
     ]
     const props = defineProps({
         autoPlay:{

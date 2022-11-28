@@ -131,6 +131,9 @@ export default defineConfig({
     rewrite: (path) => path.replace(/\/api/, '')  // 路径重写
     }
     }
+    },
+    build: {
+      outDir:'pikachuV3'
     }
 
 })

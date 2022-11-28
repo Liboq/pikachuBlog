@@ -9,7 +9,6 @@ function markdownHighlight(str: string, lang: string) {
     // https://github.com/highlightjs/highlight.js/issues/2277
     return hljs.highlight(str, { language: lang, ignoreIllegals: true }).value;
   }
-
   return '';
 }
 export const markdown = {

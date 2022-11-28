@@ -1,6 +1,6 @@
 <template>
   <div class="message-container">
-    <h1 class="message-container-title">留言板</h1>
+    <div class="message-container-title">留言板</div>
     <div class="message-container-box"><MessageBox @send-message="(data)=>addMessages(data,0)"></MessageBox></div>
     <div><MessageList :message-list="messageList"></MessageList></div>
   </div>
@@ -45,8 +45,8 @@ provide('sendMessage',addMessages )
   margin: 0 auto;
   width: 1126px;
   &-title {
+    padding: 30px 0 20px; 
     text-align: center;
-    height: 31px;
     font-size: 24px;
     font-family: YouSheBiaoTiHei-Regular, YouSheBiaoTiHei;
     font-weight: 400;
