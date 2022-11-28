@@ -1,7 +1,6 @@
 <template>
-        <div>
             <img :style="getStyle"  class="img-container" :src="props.imgPath" alt="">
-        </div>
+
 </template>
     
 <script setup lang='ts'>

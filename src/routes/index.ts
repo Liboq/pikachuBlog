@@ -60,7 +60,16 @@ const routes : Array<RouteRecordRaw> = [
                         title: '文章',
                         hideMenu: false,
                       },
-                }
+                },
+                {
+                    path:'photo',
+                    name:'photo',
+                    component: ()=> import("../page/photo/index.vue"),
+                    meta: {
+                        title: '图片',
+                        hideMenu: false,
+                      },
+                },
             
         ]
     },

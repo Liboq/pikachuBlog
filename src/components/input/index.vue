@@ -1,6 +1,6 @@
 <template>
   <div class="input-container">
-    <div class="input-container-title">{{ props.title }}</div>
+    <div v-if="title" class="input-container-title">{{ props.title }}</div>
     <input
       @blur="(e) => emit('blur', e)"
       :placeholder="props.placeholder"
@@ -17,7 +17,7 @@
 import { ref, defineEmits, watch } from 'vue';
 const props = defineProps({
   style: {
-    type: String,
+    type: Object,
     default: ''
   },
   title: {
@@ -53,7 +53,7 @@ const change = (e: any) => {
   position: relative;
   border-radius: 5px 5px 5px 5px;
   display: flex;
-  width: 231px;
+  min-width: 231px;
   &-title {
     position: absolute;
     width: 63px;
@@ -65,10 +65,11 @@ const change = (e: any) => {
     align-items: center;
   }
   &-box {
-    padding: 0 10px 0 73px;
+    box-sizing: border-box;
+    padding: 0 10px 0 10px;
+    margin-left: 62px;
     font-size: 16px;
     height: 42px;
-    border-radius: 5px 0px 0px 5px;
     background: #d1d9b4;
     opacity: 1;
   }

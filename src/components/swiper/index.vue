@@ -68,6 +68,7 @@
         }
     }
     .arrow{
+        cursor: pointer;
         .lbq{
             font-size: 30px;
             color: #fff;
