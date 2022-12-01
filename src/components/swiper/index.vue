@@ -8,7 +8,7 @@
 </template>
     
 <script setup lang='ts'>
-    import { ref,defineProps, onBeforeUnmount } from 'vue';
+    import { ref, onBeforeUnmount } from 'vue';
     import Dot from './dot.vue'
     import SwiperItem from './item.vue'
     const activeIndex = ref(1)

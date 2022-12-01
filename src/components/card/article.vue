@@ -6,19 +6,22 @@
       </div>
     </div>
     <div class="article-card-info">
-      <div class="article-card-info-date">发布于 {{article.date}}</div>
-      <div class="article-card-info-title">{{article.titleZh}}</div>
+      <h1 class="article-card-info-title">{{article.titleZh}}</h1>
+    
+      <p class="article-card-info-content">{{article.content}}</p>
       <div class="article-card-info-message">
         <div class="article-card-info-message-span"><span class="lbq lbq-dianzan"></span><span>{{article.like}}</span> </div>
         <div class="article-card-info-message-span"><span class="lbq lbq-message"></span><span>留言人数</span> </div>
         <div class="article-card-info-message-span"><span class="lbq lbq-biaoqian"></span><span v-for="tag in article.tags.filter((item:Object,index:number)=>index<2)" :key="tag.id">{{tag.tipName}}</span> </div>
       </div>
-      <p class="article-card-info-content">{{article.content}}</p>
+      <div class="article-card-info-date">发布于 {{article.date}}</div>
+
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { title } from 'process';
 import { useRouter } from 'vue-router';
         const router = useRouter()
         const props = defineProps({
@@ -27,7 +30,7 @@ import { useRouter } from 'vue-router';
                 }
         })
         const goArticle = ()=>{
-                router.push({ path: '/article', query: { id: props.article?._id } })
+                router.push({ path: '/article', query: { titleEn: props.article?.titleEn} })
         }
 </script>
 
@@ -96,7 +99,7 @@ import { useRouter } from 'vue-router';
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
-        margin-bottom: 0;
+        margin-bottom: 16px;
       }
     }
   }

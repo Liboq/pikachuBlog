@@ -7,7 +7,7 @@
       @input="change"
       class="input-container-box"
       :value="val"
-      :style="props.style"
+      :style="style"
       type="text"
     />
   </div>

@@ -8,7 +8,7 @@
       <div class="nav-item" @click="goPage('/gollery')">图库 ></div>
     </div>
     <div class="nav-other">
-      <div class="nav-other-item github-img"></div>
+      <div class="nav-other-item "><a class="github-img" href="https://github.com/Liboq/pikachuBlog" ></a></div>
     </div>
   </div>
 </template>
@@ -35,13 +35,25 @@ const goPage = (path: string) => router.push(path);
     align-items: center;
   }
   .nav-item {
-    height: 17px;
+    transition: all .6s;
+    height: 60px;
+    text-align: center;
     font-size: 14px;
     font-family: Inter-Regular, Inter;
     font-weight: 400;
     color: #b9bf8f;
-    line-height: 16px;
-    padding: 0 10px;
+    line-height: 60px;
+    padding: 0 20px;
+    cursor: pointer;
+    &:hover {
+      height: 60px;
+      background: #b9bf8f;
+      text-align: center;
+
+      color: #fff;
+      border-radius: 0px 0px 0px 0px;
+      opacity: 1;
+    }
   }
   .nav-other {
     position: absolute;
@@ -55,6 +67,7 @@ const goPage = (path: string) => router.push(path);
       height: 60px;
       display: flex;
       align-content: center;
+      align-items: center;
     }
     .github-img {
       background-image: url('../../../public/github.svg');
@@ -63,6 +76,10 @@ const goPage = (path: string) => router.push(path);
       height: 40px;
       border-radius: 100%;
       border: 1px solid #ccc;
+      transition: all .6s;
+      &:hover{
+        transform: scale(1.1);
+      }
     }
   }
 }

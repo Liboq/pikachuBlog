@@ -77,7 +77,6 @@ const dateFormate = (date: number) => {
 };
 const addMessage:InjectionKey<Function>|any = inject('sendMessage')
 const sendMessage = (data:any) => {
-    console.log('data',data);
     // data['pid']= props.listItem.mid
     addMessage(data,props.listItem.mid)
     isShowMes.value= false

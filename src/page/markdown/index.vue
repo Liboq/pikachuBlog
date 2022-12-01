@@ -15,12 +15,12 @@
     >
       <ArticleCard :article="article"></ArticleCard>
     </div>
-    <div v-if="articleList.length>5" class="markdwon-pagination">
+    <div v-if="pageTotal>1" class="markdwon-pagination">
       <PaginationContainer
         :page-num="pageNum"
         :page-size="pageSize"
         :page-total="pageTotal"
-        :on-go-paging="goPaging"
+        @goPaging="goPaging"
       />
     </div>
   </div>
@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import ArticleCard from '../../components/card/article.vue';
-import { getRightAll } from '../../api/markdown';
+import { getRightAll,getAll } from '../../api/markdown';
 import { onMounted, ref } from 'vue';
 import { getAllTag } from '../../api/tag';
 import PaginationContainer from '../../components/pagination/index.vue';
@@ -38,6 +38,10 @@ const searchVal = ref('');
 const pageNum = ref(1);
 const pageSize = ref(5);
 const pageTotal = ref(1);
+const getAlls = async  () => {
+    const res = await getAll()
+    pageTotal.value = Math.floor(res.data.data.length / pageSize.value) + 1;
+}
 const getRightAlls = async () => {
   const params = {
     category: '',
@@ -46,10 +50,9 @@ const getRightAlls = async () => {
     tips: [],
     titleZh: searchVal.value
   };
+  getAlls()
   const res = await getRightAll(params);
-  pageTotal.value = Math.floor(res.data.data.length / pageSize.value) + 1;
   const tags = await getAllTag();
-  console.log(tags);
 
   articleList.value = res.data.data.map((item: any) => {
     if (tags) {
@@ -66,9 +69,9 @@ const getRightAlls = async () => {
 
     return item;
   });
-  console.log(articleList.value);
 };
 const goPaging = (index:number)=>{
+  
   if(pageNum.value ===index){
     return
   }

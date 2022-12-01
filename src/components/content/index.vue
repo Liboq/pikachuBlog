@@ -9,6 +9,7 @@
 <style lang="scss" scoped>
     .content-container{
         min-height: 868px;
+        box-sizing: border-box;
         background-color: #f3f3f3;
     }
 </style>

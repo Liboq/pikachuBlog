@@ -4,7 +4,13 @@ import markdownItAnchor from 'markdown-it-anchor';
 import { slugify } from 'transliteration';
 import markdownItEmoji from 'markdown-it-emoji';
 import container from 'markdown-it-container';
+import string from 'string'
+const slugify2 = (s:any) => string(s).slugify().toString()
 function markdownHighlight(str: string, lang: string) {
+  hljs.configure({
+    classPrefix: 'hljs-',
+    languages: ['CSS', 'HTML', 'JavaScript', 'TypeScript', 'Markdown']
+  });
   if (lang && hljs.getLanguage(lang)) {
     // https://github.com/highlightjs/highlight.js/issues/2277
     return hljs.highlight(str, { language: lang, ignoreIllegals: true }).value;
@@ -15,7 +21,6 @@ export const markdown = {
   name: 'markdown',
   beforeMount(el: any, binding: { value: any }, vnode: any) {
     const { value } = binding;
-    console.log(value, vnode);
     const mdIt = MarkdownIt({
       typographer: false, // https://markdown-it.github.io/markdown-it/#MarkdownIt
       highlight: markdownHighlight

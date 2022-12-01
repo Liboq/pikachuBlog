@@ -7,7 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import { log } from 'console';
 import { onMounted, ref, provide } from 'vue';
 import { addMessage, getAllMes } from '../../api/message';
 import MessageBox from '../../components/message/box.vue';

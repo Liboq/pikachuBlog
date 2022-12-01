@@ -5,7 +5,6 @@
 </template>
     
 <script setup lang='ts'>
-    import { defineProps } from 'vue';
     const props = defineProps({
         imgPath:{
           type: String,
@@ -17,6 +16,7 @@
 <style lang="scss" scoped>
     .swiper-item{
         &-img{
+            transition: all .6s;
             width: 100%;
             height: 868px;
         }

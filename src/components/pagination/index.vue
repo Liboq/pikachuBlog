@@ -1,6 +1,6 @@
 <template>
   <div class="pagination-container">
-    <div class="left-arrow small-box">
+    <div @click="goPaging(indexActive-1)"  class="left-arrow small-box">
       <span class="lbq lbq-zuojiantou"></span>
     </div>
     <div class="page-num">
@@ -22,8 +22,8 @@
       </div>
       <div @click="goPaging(pageTotal)"  class="small-box" v-if="pageTotal > 5">{{ pageTotal }}</div>
     </div>
-    <div class="right-arrow small-box">
-      <span class="lbq lbq-youjiantou"></span>
+    <div @click="goPaging(indexActive+1)"  class="right-arrow small-box">
+      <span  class="lbq lbq-youjiantou"></span>
     </div>
   </div>
 </template>
@@ -47,6 +47,7 @@ const props = defineProps({
 });
 const emit= defineEmits(['goPaging'])
 const controlNum = ref(1);
+const indexActive = ref(1)
 const compNum = computed(() => {
   if (props.pageTotal > 5) {
     return 4;
@@ -56,7 +57,13 @@ const compNum = computed(() => {
   }
 });
 const goPaging = (index:number) => {
-    console.log('index',index);
+  if(index<=0){
+    return
+  }
+  if(index>props.pageTotal){
+    return
+  }
+    indexActive.value = index
     
     emit('goPaging',index)
 };

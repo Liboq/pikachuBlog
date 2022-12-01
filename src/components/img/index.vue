@@ -29,6 +29,7 @@ const props = defineProps({
     
 <style lang="scss" scoped>
     .img-container{
+        transition: all .6s;
         width: 114px;
         height: 114px;
         background: #D1D9B4;
