@@ -69,7 +69,7 @@ const winScroll = throttle(() => {
   for (let value of menuText.value) {
     if (document.getElementById(slugify(value))) {
       const entry = document.getElementById(slugify(value)) as HTMLElement;
-      if (entry.offsetTop <= scrollTop.value) {
+      if (entry.offsetTop-1 <= scrollTop.value) {
         indexActive.value = menuText.value.indexOf(value);
       }
     }

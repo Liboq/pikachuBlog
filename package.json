@@ -19,6 +19,7 @@
     "markdown-it-for-inline": "^0.1.1",
     "moment": "^2.29.4",
     "pinia": "^2.0.24",
+    "simple-js-tracker": "^0.1.4",
     "string": "^3.3.3",
     "transliteration": "^2.3.5",
     "vite-plugin-vue-markdown": "^0.21.1",
