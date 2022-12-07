@@ -57,6 +57,7 @@ const goGolleryItem = ()=>{
   height: 350px;
   width: 362px;
   margin-bottom: 10px;
+  text-align: center;
   &-photo {
     height: 270px;
     width: 100%;
