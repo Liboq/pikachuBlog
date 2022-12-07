@@ -17,8 +17,30 @@
 body {
   margin: 0;
   width: 100%;
-  background-color: #FCFBFB;
   padding: 0;
+   
+/* 设置滚动条的样式 */
+
+}
+::-webkit-scrollbar {
+  width:8px;
+}
+::-webkit-scrollbar :horizontal {
+  width:8px;
+}
+::-webkit-scrollbar-track {
+
+  border-radius:10px;
+  background:#ffffff4d;
+}
+::-webkit-scrollbar-thumb {
+  border-radius:10px;
+  background:rgba(0,0,0,0.1);
+
+  background:rgb(126, 192, 156);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background:rgba(255,0,0,0.4);
 }
 div{
   box-sizing: border-box;

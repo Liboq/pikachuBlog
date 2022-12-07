@@ -4,12 +4,7 @@
     <div class="photo-container-description"><span>描述：</span>{{description}}</div>
     <div class="photo-container-list">
       <div class="photo-container-list-item" v-for="path in pathList">
-        <ImgContainer
-          width="300px"
-          height="300px"
-          :key="path"
-          :img-path="path"
-        />
+        <img class="photo-img" :src="path" alt="">
       </div>
     </div>
   </div>
@@ -19,7 +14,6 @@
 import { getOneGollery } from '../../api/golley';
 import { useRoute } from 'vue-router';
 import { onMounted, ref } from 'vue';
-import ImgContainer from '../../components/img/index.vue';
 const route = useRoute();
 const _id = route.query.id;
 const pathList = ref([]);
@@ -39,6 +33,23 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+@media screen and (max-width:500px) {
+  .photo-container {
+    width: 100% !important;
+    padding: 0.3rem !important;
+    &-list{
+      &-item{
+        width: 3rem !important;
+    height: 3rem !important;
+        .photo-img{
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+      }
+    }
+  }
+ 
+}
 .photo-container {
   margin: 0 auto;
   width: 962px;
@@ -59,7 +70,12 @@ onMounted(() => {
       :hover {
         transform: scale(1.1);
       }
+      .photo-img{
+        width: 300px;
+        height: 300px;
+      }
     }
   }
+
 }
 </style>

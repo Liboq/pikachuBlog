@@ -2,12 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/pikachu.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pikachuBLog</title>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
   </body>
+  <script>
+     window.onblur = function () {
+      document.title = "客官请留步";
+    };
+    window.onfocus = function () {
+      document.title = "欢迎你回来";
+      setTimeout(() => {
+        document.title = 'pikachu的个人博客'
+      }, 3000)
+    };
+    document.title = 'pikachu的个人博客'
+  </script>
 </html>

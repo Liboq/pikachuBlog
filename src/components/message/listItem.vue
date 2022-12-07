@@ -28,8 +28,6 @@
         </div>
         <TextAreaBox
           :content="son.content"
-          width="898px"
-          height="auto"
         ></TextAreaBox>
       </div>
     </div>

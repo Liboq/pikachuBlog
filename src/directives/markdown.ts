@@ -69,7 +69,9 @@ export const markdown = {
     
         return self.renderToken(tokens, idx, options);
       };
-    const innerHTML = mdIt.render(value);
+    const innerHTML = mdIt.render(value).replace(/<pre>/g, "<pre id='hljs'>");
+    console.log(innerHTML);
+    
     el.innerHTML = innerHTML;
   }
 };

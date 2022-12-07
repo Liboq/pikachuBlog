@@ -8,9 +8,15 @@
 <style lang="scss" scoped>
     .dot-item{
         display: inline-block;
-        border: 3px solid skyblue;
-        width: 3px;
-        height: 3px;
-        border-radius: 6px;
+        border: 6px solid skyblue;
+        width: 6px;
+        height: 6px;
+        border-radius: 12px;
+        &-active{
+            border: 6px solid #ccc;
+        }
+        & + & {
+            margin-left: 5px;
+        }
     }
 </style>

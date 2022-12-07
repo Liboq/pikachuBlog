@@ -14,24 +14,21 @@ import MessageList from '../../components/message/list.vue';
 import {arrayToTree} from'../../utils/common'
 const messageList = ref()
 const addMessages = async(data:any,index:number)=>{
-    console.log(data);
     data['pid']=index
    const res = await addMessage(data)
    if(res.status === 200){
-    console.log('true');
     getAllMess()
    }else{
     console.log('error');
    }
-   console.log(res);
+
 } 
 const getAllMess = async()=>{
    const res= await getAllMes()
-   console.log(res);
+
    const result = res.data
    const treeData = arrayToTree(result.data)
    messageList.value = treeData
-   console.log(treeData);
 } 
 onMounted(()=>{
     getAllMess()
@@ -40,6 +37,18 @@ provide('sendMessage',addMessages )
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 500px) {
+  .message-container{
+    height: 100%;
+    width: 100% !important;
+    &-title{
+      font-size: 1rem !important;
+    }
+    &-box{
+        
+    }
+  }
+}
 .message-container {
   margin: 0 auto;
   width: 1126px;
@@ -50,7 +59,6 @@ provide('sendMessage',addMessages )
     font-family: YouSheBiaoTiHei-Regular, YouSheBiaoTiHei;
     font-weight: 400;
     color: #b9bf8f;
-    line-height: 28px;
   }
   &-box {
     margin: 50px 0;

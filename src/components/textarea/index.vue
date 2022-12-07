@@ -56,4 +56,10 @@ const change = (e:any)=>{
     outline: #b9bf8f auto 1px;
   }
 }
+@media screen and (max-width:1240px) {
+    .textarea-container{
+    width: 7rem;
+
+    }
+}
 </style>

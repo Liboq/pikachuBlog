@@ -5,20 +5,20 @@
       @blur="(e) => emit('blur', e)"
       :placeholder="props.placeholder"
       @input="change"
-      class="input-container-box"
+      :class="getClass"
       :value="val"
-      :style="style"
       type="text"
     />
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from '@vue/reactivity';
 import { ref, defineEmits, watch } from 'vue';
 const props = defineProps({
-  style: {
-    type: Object,
-    default: ''
+  big:{
+    type:Boolean,
+    default:false
   },
   title: {
     type: String,
@@ -41,6 +41,12 @@ watch(
     val.value = props.modelValue;
   }
 );
+const getClass = computed(()=>{
+  return {
+    'input-container-box':true,
+    'input-container-big-box':props.big
+  }
+})
 const change = (e: any) => {
   val.value = e.target.value;
   emit('update:modelValue', e.target.value);
@@ -55,9 +61,12 @@ const change = (e: any) => {
   display: flex;
   min-width: 231px;
   &-title {
-    position: absolute;
-    width: 63px;
-    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:63px ;
+    height: 100%;
+    padding: 10px;
     background: #b9bf8f;
     opacity: 1;
     display: flex;
@@ -67,17 +76,41 @@ const change = (e: any) => {
   &-box {
     box-sizing: border-box;
     padding: 0 10px 0 10px;
-    margin-left: 62px;
     font-size: 16px;
-    height: 42px;
+    height: 100%;
     background: #d1d9b4;
     opacity: 1;
+  }
+  &-big-box{
+    width: 600px;
   }
   input {
     border: 1px #b9bf8f solid;
     &:focus-visible {
       outline: #b9bf8f auto 1px;
     }
+  }
+}
+@media screen and (max-width:1240px) {
+
+  .input-container {
+    input{
+    width: 1.3rem;
+    font-size: 12px !important;
+  }
+    &-title {
+      font-size: 12px;
+    width: 1rem;
+    }
+    &-box{
+
+    }
+  }
+
+}
+@media screen and (max-width:500px) {
+  input{
+    font-size: 12px !important;
   }
 }
 </style>

@@ -29,9 +29,14 @@ import { getAllCategory } from '../../api/category';
 </script>
     
 <style lang="scss" scoped>
+@media screen and (max-width: 500px){
+    .bottom-container{
+        font-size: 18px;
+    }
+}
     .bottom-container{
         width: 100%;
-        height: 110px;
+        margin-top: 10px;
         padding-top: 20px;
         background: #ccc;
         display: flex;

@@ -3,7 +3,7 @@
     <div class="markdown-input">
       <InputContainer
         placeholder="搜索文章标题"
-        style="width: 600px; text-align: center"
+      big
         v-model="searchVal"
       />
       <span @click="searchTitle" class="lbq lbq-sousuo"></span> <span @click="refresh" class="lbq lbq-shuaxin"></span>
@@ -15,7 +15,7 @@
     >
       <ArticleCard :article="article"></ArticleCard>
     </div>
-    <div v-if="pageTotal>1" class="markdwon-pagination">
+    <div v-if="pageTotal>1" class="markdown-pagination">
       <PaginationContainer
         :page-num="pageNum"
         :page-size="pageSize"
@@ -91,21 +91,39 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 5000px) {
+@media screen and (max-width: 500px) {
+  .markdown{
+    width: 10rem !important;
+    &-input{
+      width: 100%  !important;
+      justify-content: center;
+      margin: 0.7rem 0 !important;
+      &-container{
+        width: 10rem !important;
+      }
+    }
+    &-card{
+      height: 3rem;
+    }
+    &-pagination{
+      margin-top: 0.5rem;
+    }
+  }
+}
   .markdown {
     margin: 0 auto;
     width: 820px;
-    min-height: 868px;
     &-input {
       padding-top: 20px;
       display: flex;
       width: 100%;
       margin-bottom: 30px;
+      &-container{
+        width: 800px;
+      }
       .lbq {
-        height: 42px;
-        width: 42px;
+        padding: 10px;
         text-align: center;
-        line-height: 42px;
         margin: 0 15px;
         color: #fff;
         background: #d1d9b4;
@@ -121,5 +139,13 @@ onMounted(() => {
       flex-direction: column;
     }
   }
-}
+  @media screen and (max-width:1240px) {
+      .markdown{
+        .lbq{
+        font-size: 0.25rem;
+
+        }
+      }
+  }
+
 </style>

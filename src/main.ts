@@ -5,6 +5,7 @@ import App from './App.vue'
 import {createPinia} from 'pinia'
 import router from './routes'
 import directives from './directives'
+import 'amfe-flexible'
 // @ts-ignore
 import SimpleJsTracker from 'simple-js-tracker'
 

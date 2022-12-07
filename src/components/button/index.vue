@@ -18,13 +18,12 @@
 <style lang="scss" scoped>
 .button-container {
   &-item {
-    width: 116px;
-    height: 42px;
     border: none;
     background: #d1d9b4;
     border-radius: 5px 5px 5px 5px;
     opacity: 1;
     color: white;
+    padding: 10px;
   }
   &-text {
     width: 72px;

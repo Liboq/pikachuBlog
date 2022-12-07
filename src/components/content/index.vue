@@ -1,5 +1,5 @@
 <template>
-        <div class="content-container"><router-view></router-view></div>
+        <div class="content-container"><div class="content-container-box"><router-view></router-view></div></div>
 </template>
     
 <script setup lang='ts'>
@@ -8,8 +8,15 @@
     
 <style lang="scss" scoped>
     .content-container{
-        min-height: 868px;
+        display: flex;
+        justify-content: center;
+        min-height: calc(100vh - 60px);
         box-sizing: border-box;
-        background-color: #f3f3f3;
+        &-box{
+            height: 100%;
+        }
+    }
+    @media screen and (max-width:1240px) {
+
     }
 </style>

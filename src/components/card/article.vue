@@ -2,13 +2,14 @@
   <div @click="goArticle" class="article-card" v-if="article">
     <div class="article-card-cover">
       <div class="article-card-cover-img">
-        <img src="https://api.tonnai.com/rand/ecy-img/pc.php?33" alt="" />
+        <!-- 'https://api.tonnai.com/rand/ecy-img/pc.php?33'|| -->
+        <img src="https://img.lzxjack.top/img/202203292215977.webp" alt="" />
       </div>
     </div>
     <div class="article-card-info">
       <h1 class="article-card-info-title">{{article.titleZh}}</h1>
     
-      <p class="article-card-info-content">{{article.content}}</p>
+      <p class="article-card-info-content" v-markdown="article.content"></p>
       <div class="article-card-info-message">
         <div class="article-card-info-message-span"><span class="lbq lbq-dianzan"></span><span>{{article.like}}</span> </div>
         <div class="article-card-info-message-span"><span class="lbq lbq-message"></span><span>留言人数</span> </div>
@@ -21,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import { title } from 'process';
 import { useRouter } from 'vue-router';
         const router = useRouter()
         const props = defineProps({
@@ -35,7 +35,29 @@ import { useRouter } from 'vue-router';
 </script>
 
 <style scoped lang="scss">
-@media screen and (max-width: 2000px) {
+@media screen and (max-width: 500px) {
+  .article-card{
+    height: 100%;
+    &-cover{
+      height: 100% !important;
+      width:  5rem !important;
+      img{
+        height: 100% !important;
+      width:  3rem !important;
+      }
+      &-img{
+        height: 100% !important;
+        width: 1.8rem !important;
+      // width:  3rem;
+      }
+    }
+    &-info{
+      width: 5rem !important;
+      height: 100% !important;
+      font-size: 18px;
+    }
+  }
+}
   .article-card {
     overflow: hidden;
     margin-bottom: 20px;
@@ -103,5 +125,5 @@ import { useRouter } from 'vue-router';
       }
     }
   }
-}
+
 </style>

@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import './github.css';
+import './github.scss';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { getOneMd } from '../../api/markdown';
@@ -28,12 +28,17 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width:500px) {
+  .article-content {
+  width: 100% !important;
+}
+}
 .article-content {
   width: 868px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 10px;
-  min-height: 868px;
+  margin: 10px auto;
+  padding: 20px;
+  min-height: 100%;
+  box-shadow: 0px 4px 4px 4px rgba(69, 141, 140, 0.3)
 }
 
 

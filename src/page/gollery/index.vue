@@ -1,11 +1,11 @@
 <template>
   <div class="gollery-container">
     <div class="">
-      <img :src="imgTop" alt="" />
+      <img class="gollery-container-img" :src="imgTop" alt="" />
     </div>
     <div class="gollery-container-photo">
       <p class="gollery-container-photo-title">photo</p>
-      <div>
+      <div class="gollery-container-photo-cards">
         <div v-for="item in golleryList"><GolleryCard :gollery-item="item" /></div>
       </div>
     </div>
@@ -30,12 +30,36 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 500px) {
+  .gollery-container {
+    &-photo {
+      &-cards{
+        justify-content: space-between;
+        width: 100% !important;
+      }
+      // width: 100%;
+      &-title{
+      font-size: 1rem !important;
+    }
+    }
+
+  }
+}
 .gollery-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  &-img{
+    width: 100%;
+  }
   &-photo {
-    margin: 0 auto;
-    width: 1184px;
+    &-cards{
+      width: 1140px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
     &-title {
-      height: 47px;
       font-size: 36px;
       font-family: YouSheBiaoTiHei-Regular, YouSheBiaoTiHei;
       font-weight: 400;

@@ -9,17 +9,54 @@
     </div>
     <div class="nav-other">
       <div class="nav-other-item "><a class="github-img" href="https://github.com/Liboq/pikachuBlog" ></a></div>
+      <div>主题</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted, onUpdated } from 'vue';
 import { useRouter } from 'vue-router';
+import { modeMap, modeMapArr } from '../../utils/modeMap';
+
+const bodyStyle = window.document.getElementsByTagName('body')[0].style;
 const router = useRouter();
 const goPage = (path: string) => router.push(path);
+interface Props {
+  navShow?: boolean;
+  setNavShow?: Function;
+  mode?: number;
+  setMode?: Function;
+}
+
+onMounted(()=>{
+  for (const type of modeMapArr) {
+      bodyStyle.setProperty(type, modeMap[type as keyof typeof modeMap][0]);
+      console.log( type,modeMap[type as keyof typeof modeMap][0]);
+      
+    }
+})
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 500px) {
+  .nav-container {
+    height: 1.5rem !important;
+    .nav-item{
+    font-size: 0.3rem !important;
+    }
+    .nav-other {
+      height: 100% !important;
+    font-size: 0.3rem !important;
+    &-item{
+      .github-img{
+        width: 0.5rem !important;
+        height: 0.5rem !important;
+      }
+    }
+    }
+}
+}
 .nav-container {
   width: 100%;
   height: 60px;
@@ -61,19 +98,24 @@ const goPage = (path: string) => router.push(path);
     height: 60px;
     top: 0;
     display: flex;
-
     align-items: center;
+    div+ div{
+      margin-left: 10px;
+    }
     &-item {
       height: 60px;
       display: flex;
       align-content: center;
       align-items: center;
+     
     }
     .github-img {
       background-image: url('../../../public/github.svg');
       background-repeat: no-repeat;
       width: 40px;
       height: 40px;
+      background-position:center center;
+      background-size: auto 100%;
       border-radius: 100%;
       border: 1px solid #ccc;
       transition: all .6s;
