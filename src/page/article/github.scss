@@ -5,7 +5,9 @@
   padding: 10px 20px;
   background-color: $codeBg;
   border-radius: 20px;
+  overflow: auto;
 }
+
 
   /* // 代码片段 */
   code {
@@ -17,6 +19,7 @@
     border-radius: 8px;
     margin: 0 2px;
     font-family: dengxian;
+
   }
 
   // 代码高亮主题配置
@@ -138,10 +141,8 @@
 }
 
 @media screen and (max-width: 1240px) {
-  body{
-    font-size: 40px !important;
-  }
   #hljs {
+    border-radius: 10px !important;
     padding: 0.5rem !important;
     border-radius: 1rem !important;
   }

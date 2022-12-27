@@ -88,6 +88,11 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width:500px) {
+  .anchor-list {
+    display: none !important;
+  }
+}
 .anchor-list  {
   margin: 10px;
   padding: 10px;

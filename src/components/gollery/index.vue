@@ -15,7 +15,6 @@
 <script setup lang="ts">
 import moment from 'moment';
 import { useRouter } from 'vue-router';
-import ImgContainer from '../img/index.vue';
 const router = useRouter()
 
 const props = defineProps({

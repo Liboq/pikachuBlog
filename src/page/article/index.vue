@@ -28,9 +28,12 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width:500px) {
+@media screen and (max-width:500px) { 
   .article-content {
-  width: 100% !important;
+    // display: flex;
+    // padding: 0 10px;
+    width: 10rem !important;
+    overflow: hidden;
 }
 }
 .article-content {
