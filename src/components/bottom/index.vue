@@ -1,8 +1,8 @@
 <template>
         <div class="bottom-container">
-            <div class="marginbottom10">pikachu的个人博客</div>
+            <div class="marginbottom10">皮卡秋前端攻城狮</div>
             <div class="marginbottom10">
-                湘ICP备2021021223号
+                湘ICP备2023003883号-1
             </div>
             <div class="marginbottom10" >
                 <Category v-for="item in categorys" :title="item.categoryName"></Category>

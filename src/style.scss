@@ -62,4 +62,21 @@ div{
   button {
     background-color: #f9f9f9;
   }
+
+}
+@media screen and (max-width: 500px){
+
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+div{
+  ::-webkit-scrollbar{
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
 }

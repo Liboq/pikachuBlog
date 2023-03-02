@@ -34,6 +34,8 @@ onMounted(() => {
     // padding: 0 10px;
     width: 10rem !important;
     overflow: hidden;
+  box-shadow: none;
+
 }
 }
 .article-content {

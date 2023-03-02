@@ -20,7 +20,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue';
 import MarkdownIt from 'markdown-it';
 import { slugify } from 'transliteration';
 import { throttle } from 'lodash';
-const regExe = /<h2(([\s\S])*?)<\/h2>/g;
+const regExe = /<h\d(([\s\S])*?)<\/h\d>/g;
 const props = defineProps({
   content: {
     type: String,
@@ -54,9 +54,8 @@ let menuText = ref(['']);
 menuText.value.pop();
 menu.value.forEach((item: string) => {
   let s = '';
-  let reg = new RegExp(`<${props.target}(([\s\S])*?)>`,'g');
-  console.log(reg);
-  s = item.replace(`</${props.target}>`, '').replace(reg, '');
+  let reg = new RegExp(/<h\d(([\s\S])*?)>/,'g');
+  s = item.replace(/<\/h\d>/, '').replace(reg, '');
   if (s.indexOf('</span>') !== -1)
     s = s.replace('</span>', '').replace(/<span(([\s\S])*?)>/g, ''); // 过滤其他标签
   menuText.value.push(s);

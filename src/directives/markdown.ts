@@ -4,8 +4,6 @@ import markdownItAnchor from 'markdown-it-anchor';
 import { slugify } from 'transliteration';
 import markdownItEmoji from 'markdown-it-emoji';
 import container from 'markdown-it-container';
-import string from 'string'
-const slugify2 = (s:any) => string(s).slugify().toString()
 function markdownHighlight(str: string, lang: string) {
   hljs.configure({
     classPrefix: 'hljs-',
@@ -25,7 +23,7 @@ export const markdown = {
       typographer: false, // https://markdown-it.github.io/markdown-it/#MarkdownIt
       highlight: markdownHighlight
     });
-    mdIt.use(markdownItAnchor, { slugify, level: 2 });
+    mdIt.use(markdownItAnchor, { slugify, level: 1 });
     mdIt.use(markdownItEmoji);
     mdIt.use(container, 'demo', {
       render(tokens: any, idx: any) {
@@ -70,7 +68,6 @@ export const markdown = {
         return self.renderToken(tokens, idx, options);
       };
     const innerHTML = mdIt.render(value).replace(/<pre>/g, "<pre id='hljs'>");
-    console.log(innerHTML);
     
     el.innerHTML = innerHTML;
   }

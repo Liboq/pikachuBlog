@@ -54,7 +54,7 @@ import { useRouter } from 'vue-router';
     &-info{
       width: 5rem !important;
       height: 100% !important;
-      font-size: 18px;
+      font-size: 18px !important;
     }
   }
 }
@@ -122,6 +122,9 @@ import { useRouter } from 'vue-router';
         -webkit-line-clamp: 2;
         overflow: hidden;
         margin-bottom: 16px;
+        h1{
+          font-size: 1rem !important;
+        }
       }
     }
   }
