@@ -141,23 +141,26 @@
 }
 
 @media screen and (max-width: 500px) {
-  #hljs {
-    padding: 0.5rem !important;
-    border-radius: 0.5rem !important;
-
-  }
-  h1{
-    font-size: 1rem !important;
-  }
-  h2{
-    font-size: 0.8rem !important;
-  }
-  p{
-    font-size: 0.5rem !important;
-  }
-
-    /* // 代码片段 */
-    code {
-      font-size: 0.4rem !important; 
+  .article-content{
+    #hljs {
+      padding: 0.5rem !important;
+      border-radius: 0.5rem !important;
+  
     }
+    h1{
+      font-size: 1rem !important;
+    }
+    h2{
+      font-size: 0.8rem !important;
+    }
+    p{
+      font-size: 0.5rem !important;
+    }
+  
+      /* // 代码片段 */
+      code {
+        font-size: 0.4rem !important; 
+      }
+  }
+  
 }

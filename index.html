@@ -1,3 +1,11 @@
+<!--
+ * @Author: Liboq 99778162+Liboq@users.noreply.github.com
+ * @Date: 2022-11-18 13:33:47
+ * @LastEditors: Liboq 99778162+Liboq@users.noreply.github.com
+ * @LastEditTime: 2023-03-21 10:05:30
+ * @FilePath: \my-vue-app\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +17,11 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
-    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+    <script>
+      if (screen && screen.width >500 ) {
+      document.write('<script  type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"><\/script>');
+      }
+      </script>
   </body>
   <script>
      window.onblur = function () {

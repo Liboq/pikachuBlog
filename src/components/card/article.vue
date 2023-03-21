@@ -55,6 +55,11 @@ import { useRouter } from 'vue-router';
       width: 5rem !important;
       height: 100% !important;
       font-size: 18px !important;
+       &-content {
+         h1{
+          font-size: 0.3rem !important;
+        }
+      }
     }
   }
 }
