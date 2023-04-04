@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="article-content" v-if="article">
+      <h1>{{ article.titleZh }}</h1>
+      <img  class="image" :src="article.image_main" alt="">
       <div v-markdown="article.content"></div>
     </div>
     <div v-if="article" ><Anchor  :content="article.content"  /></div>
@@ -16,7 +18,7 @@ import Anchor from '../../components/anchor/index.vue';
 
 const route = useRoute();
 const titleEn = route.query.titleEn;
-const md = '';
+const md = 'https://cdn.nlark.com/yuque/0/2023/png/32577971/1679390446368-e8c65c0a-717a-4837-be22-b8893ac92fad.png';
 const article = ref();
 const getOneMds = async () => {
   const res = await getOneMd({ titleEn });
@@ -34,7 +36,7 @@ onMounted(() => {
     // padding: 0 10px;
     width: 10rem !important;
     overflow: hidden;
-  box-shadow: none;
+    box-shadow: none;
 
 }
 }
@@ -43,7 +45,20 @@ onMounted(() => {
   margin: 10px auto;
   padding: 20px;
   min-height: 100%;
-  box-shadow: 0px 4px 4px 4px rgba(69, 141, 140, 0.3)
+  box-shadow: 0px 4px 4px 4px rgba(69, 141, 140, 0.3);
+  .image {
+      width: 100%;
+      transition: all 0.6s;
+      object-fit: cover;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.01);
+      }
+      img{
+        width: 300px ;
+        height: 300px;
+      }
+    }
 }
 
 
