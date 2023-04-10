@@ -42,6 +42,7 @@ onMounted(() => {
 }
 .article-content {
   width: 868px;
+  background-color: #fff;
   margin: 10px auto;
   padding: 20px;
   min-height: 100%;

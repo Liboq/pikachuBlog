@@ -1,11 +1,17 @@
 @import '../../assets/styles/common.scss';
 
-
+img{
+  width: 100%;
+}
 #hljs {
   padding: 10px 20px;
   background-color: $codeBg;
   border-radius: 20px;
   overflow: auto;
+}
+p{
+  font-size: 18px;
+  line-height: 105%;
 }
 
 
@@ -155,6 +161,9 @@
     }
     p{
       font-size: 0.4rem !important;
+      img{
+        width: 100%;
+      }
     }
   
       /* // 代码片段 */

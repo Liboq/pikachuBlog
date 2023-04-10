@@ -66,7 +66,7 @@ import { useRouter } from 'vue-router';
   .article-card {
     overflow: hidden;
     margin-bottom: 20px;
-    background-color: #ffb;
+    background-color: rgba($color: #000000, $alpha: 0.7);
     &:hover{
         box-shadow: 0 1px 20px 10px #b9bf8f;
     }
@@ -79,11 +79,14 @@ import { useRouter } from 'vue-router';
         width: 450px;
         transition: all 0.6s;
         object-fit: cover;
+        display: flex;
+        align-items: center;
         &:hover {
           transform: scale(1.1);
         }
       }
       img {
+        width: 300px;
         border: 0;
         max-height: 100%;
       }
@@ -103,6 +106,7 @@ import { useRouter } from 'vue-router';
         color: #fff;
       }
       &-title {
+        color: #b9bf8f;
         font-size: 18px;
         text-align: right;
         margin-bottom: 20px;
@@ -111,6 +115,7 @@ import { useRouter } from 'vue-router';
         margin-bottom: 20px;
         display: flex;
         justify-content: flex-end;
+        color: #b9bf8f;
         &-span{
                 & + &{
                         margin-left: 10px;
@@ -127,6 +132,7 @@ import { useRouter } from 'vue-router';
         -webkit-line-clamp: 2;
         overflow: hidden;
         margin-bottom: 16px;
+        color: #b9bf8f;
         h1{
           font-size: 1rem !important;
         }

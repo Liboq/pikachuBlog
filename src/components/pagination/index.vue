@@ -1,10 +1,10 @@
 <template>
-  <div class="pagination-container">
+  <div class="pagination-container" v-if="pageTotal > pageSize">
     <div @click="goPaging(indexActive-1)"  class="left-arrow small-box">
       <span class="lbq lbq-zuojiantou"></span>
     </div>
-    <div class="page-num">
-      <div class="small-box" @click="goPaging(1)">1</div>
+    <div class="page-num" >
+      <div :class="indexActive === 1?'small-box active-small-box':'small-box '" @click="goPaging(1)">1</div>
       <div
         class="small-box"
         @click="controlNum - 4"
@@ -12,7 +12,7 @@
       >
         ...
       </div>
-      <div @click="goPaging(num + controlNum )" class="small-box" v-for="num in compNum">{{ num + controlNum }}</div>
+      <div @click="goPaging(num + 1 )" :class="indexActive === num+1?'small-box active-small-box':'small-box '" v-for="num in compNum">{{ num + controlNum }}</div>
       <div
         class="small-box"
         @click="controlNum + 4"
@@ -89,6 +89,9 @@ const goPaging = (index:number) => {
     &:hover {
       background: #577005;
     }
+  }
+  .active-small-box{
+    background: #577005;
   }
 }
 </style>

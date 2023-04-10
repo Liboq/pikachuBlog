@@ -1,21 +1,74 @@
+<template>
+  <div class="bgc">
+    <router-view></router-view>
+    <div @click="scrollToTop" :class="HuojianClass">
+      <svg class="lbq" aria-hidden="true">
+        <use xlink:href="#lbq-huojian"></use>
+      </svg>
+    </div>
+  </div>
+</template>
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import Home from './page/home/index.vue'
-import NavContainer from './components/nav/index.vue'
+
+import { ref, computed } from 'vue';
+const scrollTop = ref(0);
+
+const scroll = () => {
+  scrollTop.value =
+    document.documentElement.scrollTop ||
+    window.pageYOffset ||
+    document.body.scrollTop;
+};
+const scrollToTop = ()=>{
+  document.documentElement.scrollTop =0
+}
+const HuojianClass = computed(() => {
+  if (scrollTop.value >= 900) {
+    return {
+      ["huojian"]: true,
+      ['huojian-down']: true,
+    } 
+  } 
+  else{
+    return{
+      ["huojian"]: true,
+      ["huojian-none"]:true
+    }
+}
+});
+
+document.addEventListener('scroll', scroll);
 </script>
 
-<template>
-  <!-- <Home></Home> -->
+<style lang="scss" scoped>
+.bgc {
+  background-image: url(./assets/image/bgc2.png);
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: dengxian;
+  .huojian {
+    transition: all 1s;
+    color: #fff;
+    position: fixed;
+    top: -100px;
+    right: 250px;
 
-  
-  <div>
-    <router-view></router-view>
-  </div>
-
-</template>
-
-<style scoped>
+    .lbq {
+      font-size: 20px !important;
+    }
+  }
+  .huojian-top {
+    transform: translateY(-700px);
+  }
+  .huojian-down {
+    transform: translateY(700px);
+  }
+  .huojian-none{
+    top:-200px
+  }
+}
 .logo {
   height: 6em;
   padding: 1.5em;

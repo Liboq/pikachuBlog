@@ -31,6 +31,7 @@ import { getAllCategory } from '../../api/category';
 <style lang="scss" scoped>
 @media screen and (max-width: 500px){
     .bottom-container{
+        color: #fff;
         font-size: 18px;
     }
 }
@@ -38,7 +39,7 @@ import { getAllCategory } from '../../api/category';
         width: 100%;
         margin-top: 10px;
         padding-top: 20px;
-        background: #ccc;
+        background-color: rgba(0,0,0,.3);
         display: flex;
         justify-content: center;
         flex-direction: column;

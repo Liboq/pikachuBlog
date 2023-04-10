@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-container">
+  <div :class="NavClass">
     <div class="nav-content">
       <div class="nav-item" @click="goPage('/home')">首页 ></div>
       <div class="nav-item" @click="goPage('/my')">个人介绍 ></div>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUpdated } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { modeMap, modeMapArr } from '../../utils/modeMap';
 
@@ -28,7 +28,7 @@ interface Props {
   mode?: number;
   setMode?: Function;
 }
-
+const scrollTop = ref(0)
 onMounted(()=>{
   for (const type of modeMapArr) {
       bodyStyle.setProperty(type, modeMap[type as keyof typeof modeMap][0]);
@@ -36,10 +36,33 @@ onMounted(()=>{
       
     }
 })
+const scroll = ()=>{
+ scrollTop.value = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+}
+const NavClass = computed(()=>{
+  if(scrollTop.value<=60){
+    return {
+      ['nav-container'] : true 
+    }
+  }
+  else{
+    return {
+      ['nav-container'] : true ,
+      ['nav-transition'] :true
+    }
+  }
+})
+
+document.addEventListener('scroll',scroll)
+
+
 </script>
 
 <style lang="scss" scoped>
 @media screen and (max-width: 500px) {
+  .nav-transition{
+  transform: translateY(-1.5rem) !important;
+}
   .nav-container {
     height: 1.5rem !important;
     .nav-item{
@@ -57,6 +80,9 @@ onMounted(()=>{
     }
 }
 }
+.nav-transition{
+  transform: translateY(-60px);
+}
 .nav-container {
   width: 100%;
   height: 60px;
@@ -65,7 +91,9 @@ onMounted(()=>{
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  z-index: 10;
+  transition: all 0.5s;
   .nav-content {
     display: flex;
     justify-content: center;

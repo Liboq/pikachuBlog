@@ -1,13 +1,22 @@
 <template>
-        <div class="tag-item">{{props.title}}</div>
+        <div :style="randomColor" class="tag-item">{{props.title}}</div>
 </template>
     
 <script setup lang='ts'>
+import { computed } from 'vue';
 
 
     const props = defineProps({
         title:{
             type: String
+        }
+    })
+    const randomColor = computed(()=>{
+        const a = Math.floor(Math.random()*10)*25
+        const b = Math.floor(Math.random()*10)*25
+        const c = Math.floor(Math.random()*10)*25
+        return {
+            color: `rgb(${a},${b},${c})`
         }
     })
 </script>
