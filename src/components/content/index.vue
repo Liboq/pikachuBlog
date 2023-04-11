@@ -19,7 +19,7 @@
     }
     @media screen and (max-width:500px) {
         .content-container{
-            padding-top: 1.5rem !important;
+            padding-top: 1.4rem !important;
         }
     }
 </style>

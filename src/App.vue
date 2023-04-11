@@ -9,7 +9,6 @@
   </div>
 </template>
 <script setup lang="ts">
-
 import { ref, computed } from 'vue';
 const scrollTop = ref(0);
 
@@ -19,28 +18,44 @@ const scroll = () => {
     window.pageYOffset ||
     document.body.scrollTop;
 };
-const scrollToTop = ()=>{
-  document.documentElement.scrollTop =0
-}
+const scrollToTop = () => {
+  document.documentElement.scrollTop = 0;
+};
 const HuojianClass = computed(() => {
   if (scrollTop.value >= 900) {
     return {
-      ["huojian"]: true,
-      ['huojian-down']: true,
-    } 
-  } 
-  else{
-    return{
-      ["huojian"]: true,
-      ["huojian-none"]:true
-    }
-}
+      ['huojian']: true,
+      ['huojian-down']: true
+    };
+  } else {
+    return {
+      ['huojian']: true,
+      ['huojian-top']: true
+    };
+  }
 });
 
 document.addEventListener('scroll', scroll);
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 800px) {
+  .huojian-top {
+    transform: translateY(-13rem) !important;
+  }
+  .huojian-down {
+    transform: translateY(12rem) !important;
+  }
+  .huojian {
+    top: -1rem !important;
+    right: 0.8rem !important;
+
+    .lbq {
+      width: 1rem !important;
+      height: 1rem !important;
+    }
+  }
+}
 .bgc {
   background-image: url(./assets/image/bgc2.png);
   background-attachment: fixed;
@@ -53,10 +68,11 @@ document.addEventListener('scroll', scroll);
     color: #fff;
     position: fixed;
     top: -100px;
-    right: 250px;
+    right: 300px;
 
     .lbq {
-      font-size: 20px !important;
+      width: 100px;
+      height: 100px;
     }
   }
   .huojian-top {
@@ -65,8 +81,8 @@ document.addEventListener('scroll', scroll);
   .huojian-down {
     transform: translateY(700px);
   }
-  .huojian-none{
-    top:-200px
+  .huojian-none {
+    top: -200px;
   }
 }
 .logo {
