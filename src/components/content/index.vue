@@ -17,9 +17,9 @@
             height: 100%;
         }
     }
-    @media screen and (max-width:1240px) {
+    @media screen and (max-width:500px) {
         .content-container{
-            padding-top: 1.4rem !important;
+            padding-top: 1.5rem !important;
         }
     }
 </style>
