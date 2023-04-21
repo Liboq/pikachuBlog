@@ -5,16 +5,19 @@
       <img  class="image" :src="article.image_main" alt="">
       <div v-markdown="article.content"></div>
     </div>
-    <div v-if="article" ><Anchor  :content="article.content"  /></div>
+    <div v-if="article" ><Anchor  :content="article.content"/></div>
   </div>
 </template>
 
 <script setup lang="ts">
 import './github.scss';
+import  "markdown-it-navbar/lib/style.css";
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { getOneMd } from '../../api/markdown';
-import Anchor from '../../components/anchor/index.vue';
+import Anchor from 'markdown-it-navbar';
+
+// import Anchor from '../../components/anchor/index.vue';
 
 const route = useRoute();
 const titleEn = route.query.titleEn;
