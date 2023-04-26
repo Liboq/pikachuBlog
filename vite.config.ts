@@ -3,12 +3,20 @@ import vue from '@vitejs/plugin-vue';
 import postCssPxToRem from 'postcss-pxtorem';
 import autoprefixer from 'autoprefixer';
 import postcssPresetEnv from 'postcss-preset-env';
+import viteCompression from 'vite-plugin-compression';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {}
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    // ...
+    viteCompression({
+      deleteOriginFile:true
+    })
+  ],
   css: {
     preprocessorOptions: {
       scss: {}
