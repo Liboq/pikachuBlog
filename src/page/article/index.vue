@@ -7,7 +7,6 @@
     </div>
     <div v-if="article">
       <Anchor
-        class=""
         :classes="classes"
         height="calc(100% - 500px)"
         :content="article.content"
@@ -24,9 +23,9 @@ import  "markdown-it-navbar/lib/style.css";
 import { onMounted, ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { getOneMd } from '../../api/markdown';
-// import Anchor from 'markdown-it-navbar';
+import Anchor from 'markdown-it-navbar';
 
-import Anchor from '../../components/anchor/anchor.vue';
+// import Anchor from '../../components/anchor/anchor.vue';
 import { throttle } from 'lodash';
 
 const route = useRoute();

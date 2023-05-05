@@ -1,29 +1,33 @@
 <template>
   <div :style="{ height }" :class="anchorClass">
-    <div v-if="title" class="anchor-title">{{ title }}</div>
-    <li
-      :class="'li-h' + item.level"
-      v-for="(item, index) in menuText"
-      :key="index"
-    >
-      <a
-        :class="
-          indexActive === index
-            ? 'anchor-item anchor-item-active'
-            : 'anchor-item'
-        "
+    <div v-if="title && menuText.length > 0" class="anchor-title">
+      {{ title }}
+    </div>
+    <div  class="menu-list">
+      <li
+        :class="'li-h' + item.level"
+        v-for="(item, index) in menuText"
+        :key="index"
         :style="style"
-        @click="indexActive = index"
-        :href="'#' + slugify(item.text)"
       >
-        {{ item.text }}</a
-      >
-    </li>
+        <a
+          :class="
+            indexActive === index
+              ? 'anchor-item anchor-item-active'
+              : 'anchor-item'
+          "
+          @click="indexActive = index"
+          :href="'#' + slugify(item.text)"
+        >
+          {{ item.text }}</a
+        >
+      </li>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import MarkdownIt from 'markdown-it';
 import { slugify } from 'transliteration';
 import { throttle } from 'lodash';
@@ -51,13 +55,18 @@ const props = defineProps({
   },
   title: {
     type: String,
-    default: '内容'
+    default: '目录'
   },
   height: {
     type: String,
     default: ''
+  },
+  route: {
+    type: Boolean,
+    default: false
   }
 });
+
 type MenuText = {
   text: string;
   level: number;
@@ -65,6 +74,43 @@ type MenuText = {
 const indexActive = ref(0);
 const html = ref('');
 const menu = ref();
+const scrollTop = ref(0);
+let menuText = ref<Array<MenuText>>([]);
+type State = {
+  [key: string]: any;
+};
+const pushState = window.history.pushState;
+window.history.pushState = function (
+  state: State,
+  title: string,
+  url?: string | null
+): void {
+  pushState.apply(window.history, [state, title, url]);
+  const event: any = new Event('pushstate');
+  event.state = state;
+  event.title = title;
+  event.url = url;
+  window.dispatchEvent(event);
+};
+
+const replaceState = window.history.replaceState;
+window.history.replaceState = function (
+  state: State,
+  title: string,
+  url?: string | null
+): void {
+  replaceState.apply(window.history, [state, title, url]);
+  const event: any = new Event('replacestate');
+  event.state = state;
+  event.title = title;
+  event.url = url;
+  window.dispatchEvent(event);
+};
+
+// window.addEventListener('replacestate', function(event: any) {
+//   console.log('replacestate event', event);
+// });
+
 const anchorClass = computed(() => {
   if (typeof props.classes === 'string') {
     return {
@@ -79,32 +125,34 @@ const anchorClass = computed(() => {
     };
   }
 });
-
-if (props.container) {
-  html.value = document.querySelector(props.container)!.innerHTML;
-} else {
-  html.value = MarkdownIt().render(props.content);
-}
-menu.value = html.value.match(regExe);
-
-let menuText = ref<Array<MenuText>>([]);
-menuText.value.pop();
-menu.value.forEach((item: string) => {
-  let s = '';
-  let index;
-  let reg = new RegExp(/<h\d(([\s\S])*?)>/, 'g');
-  s = item.replace(/<\/h\d>/, '').replace(reg, '');
-  index = props.target.indexOf(item.split('')[1] + item.split('')[2]);
-  if (index === -1) {
-    return;
+const getMenuText = () => {
+  menuText.value = [];
+  if (props.container) {
+    html.value = document.querySelector(props.container)!.innerHTML || '';
+  } else {
+    html.value = MarkdownIt().render(props.content);
   }
-  if (s.indexOf('</span>') !== -1) {
-    s = s.replace('</span>', '').replace(/<span(([\s\S])*?)>/g, ''); // 过滤其他标签
-  }
+  menu.value = html.value.match(regExe);
+  menuText.value.pop();
+  menu.value.forEach((item: string) => {
+    let s = '';
+    let index;
+    let reg = new RegExp(/<h\d(([\s\S])*?)>/, 'g');
+    s = item.replace(/<\/h\d>/, '').replace(reg, '');
+    index = props.target.indexOf(item.split('')[1] + item.split('')[2]);
+    if (index === -1) {
+      return;
+    }
+    if (s.indexOf('</span>') !== -1) {
+      s = s.replace('</span>', '').replace(/<span(([\s\S])*?)>/g, ''); // 过滤其他标签
+    }
+    if (s.indexOf('</a>') !== -1) {
+      s = s.replace('</a>', '').replace(/<a(([\s\S])*?)>/g, ''); // 过滤其他标签
+    }
 
-  menuText.value.push({ text: s, level: index + 1 });
-});
-const scrollTop = ref(0);
+    menuText.value.push({ text: s, level: index + 1 });
+  });
+};
 const winScroll = throttle(() => {
   document.addEventListener('scroll', winScroll, false);
   scrollTop.value =
@@ -121,12 +169,25 @@ const winScroll = throttle(() => {
 const getActiveIndex = () => {
   winScroll();
 };
-
+const deferGetMenu = (e: any) => {
+  if (e.state) {
+    setTimeout(() => {
+      getMenuText();
+    }, 1);
+  }
+};
 onMounted(() => {
+  if (props.route) {
+    window.addEventListener('pushstate', deferGetMenu);
+    window.addEventListener('popstate', deferGetMenu);
+  }
+  getMenuText();
   getActiveIndex();
 });
 onUnmounted(() => {
   document.removeEventListener('scroll', winScroll, false);
+  window.removeEventListener('pushstate', deferGetMenu);
+  window.removeEventListener('popstate', deferGetMenu);
 });
 </script>
 
@@ -168,8 +229,27 @@ onUnmounted(() => {
   width: 300px;
   display: flex;
   flex-direction: column;
-  overflow: auto;
   background-color: #fff;
+}
+.menu-list {
+  overflow: auto;
+  padding: 10px 2px;
+  &::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar {
+    background-color: #57b2ff;
+    height: 0;
+    width: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #57b2ff;
+    border-radius: 4px;
+    height: 0;
+    width: 0;
+  }
 }
 li {
   margin-bottom: 20px;
