@@ -27,7 +27,7 @@ jobs:
 
             # 打包
             - name: 打包
-              run:  npm  build
+              run:  npm run  build
 
             # # 上传腾讯云
             # - name: 发布到腾讯云
