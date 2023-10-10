@@ -13,7 +13,7 @@ jobs:
             # 获取源码
             - name: 迁出代码
               # 使用action库  actions/checkout获取源码
-              uses: actions/checkout@master
+              uses: actions/checkout@main
             - name: 安装pnpm
               uses: pnpm/action-setup@v2
               with:
@@ -58,6 +58,6 @@ jobs:
                 username: 'root' #ssh user name
                 server: '${{ secrets.REMOTE_HOST }}' #引用之前创建好的secret
                 ssh_private_key: ${{ secrets.PRIVATE_KEY }} #引用之前创建好的secret
-                local_path: './dist/*' # 对应我们项目build的文件夹路径
+                local_path: './pikachuV3/*' # 对应我们项目build的文件夹路径
                 remote_path: '/ruanjian/pikachuV3'
                   
