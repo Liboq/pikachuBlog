@@ -20,10 +20,10 @@
         :class="item == activeIndex ? 'dot-active' : ''"
       ></Dot>
     </div>
-    <div @click="arrowClick('left')" class="left-arrow arrow">
+    <div v-if="imgList.length>1" @click="arrowClick('left')" class="left-arrow arrow">
       <span class="lbq lbq-jiantou-zuo"></span>
     </div>
-    <div @click="arrowClick('right')" class="right-arrow arrow">
+    <div v-if="imgList.length>1" @click="arrowClick('right')" class="right-arrow arrow">
       <span class="lbq lbq-jiantou-you"></span>
     </div>
   </div>

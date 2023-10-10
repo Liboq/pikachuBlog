@@ -6,7 +6,7 @@
     <div class="message-box-container-input">
       <div class="message-box-container-input-item">
         <Input
-          @blur="(e) => getAvator(e)"
+          @blur="(e:any) => getAvator(e)"
           v-model="QQName"
           placeholder="QQ号"
           class="input-item"

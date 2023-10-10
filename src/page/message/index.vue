@@ -1,7 +1,7 @@
 <template>
   <div class="message-container">
     <div class="message-container-title">留言板</div>
-    <div class="message-container-box"><MessageBox @send-message="(data)=>addMessages(data,0)"></MessageBox></div>
+    <div class="message-container-box"><MessageBox @send-message="(data:any)=>addMessages(data,0)"></MessageBox></div>
     <div><MessageList :message-list="messageList"></MessageList></div>
   </div>
 </template>
