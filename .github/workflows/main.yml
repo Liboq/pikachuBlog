@@ -24,7 +24,6 @@ jobs:
               uses: actions/setup-node@v2.5.1
               with:
                    node-version: '16.x'
-                   cache: 'pnpm'
 
             # 安装依赖
             - name: 安装依赖
