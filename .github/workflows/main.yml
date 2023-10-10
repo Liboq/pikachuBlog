@@ -3,7 +3,7 @@ name: 打包应用并上传服务器
 on:
     push:
         branches:
-            - master
+            - main
 
 jobs:
     build:
