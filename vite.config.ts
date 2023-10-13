@@ -11,13 +11,13 @@ export default defineConfig({
   plugins: [
     vue(),
     // ...
-    // viteCompression({
-    //   filter: /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i, // 需要压缩的文件
-	  //     threshold: 1024*500, // 文件容量大于这个值进行压缩
-	  //     algorithm: 'gzip', // 压缩方式
-	  //     ext: 'gz', // 后缀名
-	  //     deleteOriginFile: true, // 压缩后是否删除压缩源文件
-    // })
+    viteCompression({
+      filter: /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i, // 需要压缩的文件
+	      threshold: 1024*20, // 文件容量大于这个值进行压缩
+	      algorithm: 'gzip', // 压缩方式
+	      ext: 'gz', // 后缀名
+	      deleteOriginFile: true, // 压缩后是否删除压缩源文件
+    })
   ],
   css: {
     preprocessorOptions: {
