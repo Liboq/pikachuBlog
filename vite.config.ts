@@ -12,6 +12,7 @@ export default defineConfig({
     vue(),
     // ...
     viteCompression({
+      filter: /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i, // 需要压缩的文件
 	      threshold: 1024*20, // 文件容量大于这个值进行压缩
 	      algorithm: 'gzip', // 压缩方式
 	      ext: 'gz', // 后缀名
@@ -37,7 +38,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // 实际请求地址
-        target: 'http://node.liboqiao.top',
+        target: 'http://127.0.0.1:7001',
         changeOrigin: true,
         rewrite: (path) => path.replace(/\/api/, '') // 路径重写
       }
