@@ -15,7 +15,6 @@ export default defineConfig({
 	      threshold: 1024*20, // 文件容量大于这个值进行压缩
 	      algorithm: 'gzip', // 压缩方式
 	      ext: 'gz', // 后缀名
-	      deleteOriginFile: true, // 压缩后是否删除压缩源文件
     })
   ],
   css: {
