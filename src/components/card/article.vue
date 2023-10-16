@@ -9,7 +9,7 @@
     <div class="article-card-info">
       <h1 class="article-card-info-title">{{article.titleZh}}</h1>
     
-      <p class="article-card-info-content" v-markdown="article.content"></p>
+      <p class="article-card-info-content" v-markdown="article.content||''"></p>
       <div class="article-card-info-message">
         <div class="article-card-info-message-span"><span class="lbq lbq-dianzan"></span><span>{{article.like}}</span> </div>
         <div class="article-card-info-message-span"><span class="lbq lbq-message"></span><span>留言人数</span> </div>

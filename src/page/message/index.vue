@@ -37,16 +37,17 @@ provide('sendMessage',addMessages )
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
+  ::v-deep .input-container-box{
+      width: 1.3rem !important;
+    }
   .message-container{
     height: 100%;
     width: 100% !important;
     &-title{
       font-size: 1rem !important;
     }
-    &-box{
-        
-    }
+
   }
 }
 .message-container {

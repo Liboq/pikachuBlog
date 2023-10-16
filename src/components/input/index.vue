@@ -82,7 +82,7 @@ const change = (e: any) => {
     opacity: 1;
   }
   &-big-box{
-    width: 600px;
+    width: 700px;
   }
   input {
     border: 1px #b9bf8f solid;
@@ -95,7 +95,6 @@ const change = (e: any) => {
 
   .input-container {
     input{
-    width: 1.3rem;
     font-size: 12px !important;
   }
     &-title {

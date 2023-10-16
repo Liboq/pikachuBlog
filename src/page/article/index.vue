@@ -3,7 +3,7 @@
     <div class="article-content" v-if="article">
       <h1>{{ article.titleZh }}</h1>
       <img class="image" :src="article.image_main" alt="" />
-      <div v-markdown="article.content"></div>
+      <div v-markdown="article.content||''"></div>
     </div>
     <div v-if="article">
       <Anchor
