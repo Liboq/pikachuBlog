@@ -3,7 +3,7 @@
     <div class="article-card-cover">
       <div class="article-card-cover-img">
         <!-- 'https://api.tonnai.com/rand/ecy-img/pc.php?33'|| -->
-        <img width="300px" height="300px" :src="article.image_main" alt="" />
+        <img width="300" height="300" :src="article.image_main" alt="" />
       </div>
     </div>
     <div class="article-card-info">
