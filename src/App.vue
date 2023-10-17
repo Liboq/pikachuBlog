@@ -57,7 +57,7 @@ document.addEventListener('scroll', scroll);
   }
 }
 .bgc {
-  background-image: url(./assets/image/bgc2.png);
+  background-image: url(./assets/image/bgc.webp);
   background-attachment: fixed;
   background-position: center 0;
   background-repeat: no-repeat;
