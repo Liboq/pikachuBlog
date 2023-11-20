@@ -91,7 +91,7 @@ const beforeUpload = async (file: any) => {
       return;
     }
   }
-  const regx = file.name.includes('.png') ? 'png' : 'jpg';
+  const regx = file.name.split(".")[1]
   const data = {
     name: file.name.replace('.' + regx, '') + '.webp',
     data: file.url,
