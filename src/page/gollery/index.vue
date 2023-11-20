@@ -18,7 +18,7 @@ import { getAllGollery } from '../../api/golley';
 import GolleryCard from '../../components/gollery/index.vue'
 const imgTop =
   'https://pikachu-2022-1305579406.cos.ap-nanjing.myqcloud.com/pikachu-gollery/unsplash%EF%BC%9AASWBa6z3llw.png';
-const golleryList = ref([]);
+const golleryList = ref();
 const getAllGollerys = async () => {
   const res = await getAllGollery();
   golleryList.value = res.data;

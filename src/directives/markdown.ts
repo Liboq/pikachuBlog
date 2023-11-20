@@ -31,7 +31,7 @@ export const markdown = {
         const token = tokens[idx];
         const tokenText = tokens.filter((item: any) => {
           return item.info.trim() === 'vue' && item.content.trim();
-        });
+        })||[];
         if (tokenText.length > 0 && tokenText[0].content) {
           textHtml = tokenText[0].content;
         }
