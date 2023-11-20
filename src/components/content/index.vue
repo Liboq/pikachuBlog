@@ -8,6 +8,7 @@
     
 <style lang="scss" scoped>
     .content-container{
+        overflow: hidden;
         display: flex;
         justify-content: center;
         min-height: calc(100vh - 60px);

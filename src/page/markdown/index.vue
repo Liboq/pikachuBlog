@@ -40,7 +40,7 @@ const pageSize = ref(5);
 const pageTotal = ref(1);
 const getAlls = async  () => {
     const res = await getAll()
-    pageTotal.value = Math.floor(res.data.data.length / pageSize.value) + 1;
+    pageTotal.value = Math.floor(res.data.length / pageSize.value) + 1;
 }
 const getRightAlls = async () => {
   const params = {
@@ -54,10 +54,10 @@ const getRightAlls = async () => {
   const res = await getRightAll(params);
   const tags = await getAllTag();
 
-  articleList.value = res.data.data.map((item: any) => {
+  articleList.value = res.data.map((item: any) => {
     if (tags) {
       item.tips.forEach((val: number) => {
-        item.tags = tags.data.data.filter((tag: any) => {
+        item.tags = tags.data.filter((tag: any) => {
           if (tag.id === val) {
             return tag.tipName;
           } else {

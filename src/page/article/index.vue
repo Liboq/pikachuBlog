@@ -33,7 +33,7 @@ const titleEn = route.query.titleEn;
 const article = ref();
 const getOneMds = async () => {
   const res = await getOneMd({ titleEn });
-  article.value = res.data.data[0];
+  article.value = res.data[0];
 };
 const classes = computed(() => {
   if (scrollTop.value <= 60) {
@@ -88,8 +88,10 @@ onMounted(() => {
   top: 0;
 }
 .article-content {
+  color: #fff;
   width: 868px;
-  background-color: #fff;
+  opacity: 0.7;
+  background-color: #0c1d1b;
   margin: 10px auto;
   padding: 20px;
   min-height: 100%;

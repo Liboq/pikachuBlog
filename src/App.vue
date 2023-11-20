@@ -69,7 +69,6 @@ document.addEventListener('scroll', scroll);
     position: fixed;
     top: -100px;
     right: 300px;
-
     .lbq {
       width: 100px;
       height: 100px;

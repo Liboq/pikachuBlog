@@ -44,6 +44,24 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: 'transform',
+        name: 'transform',
+        component: () => import('../page/transform/webp/index.vue'),
+        meta: {
+          title: '转换工具',
+          hideMenu: false
+        }
+      },
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('../page/login/index.vue'),
+        meta: {
+          title: 'login',
+          hideMenu: false
+        }
+      },
+      {
         path: 'gollery',
         name: 'gollery',
         component: () => import('../page/gollery/index.vue'),
@@ -70,15 +88,14 @@ const routes: Array<RouteRecordRaw> = [
           title: '图片',
           hideMenu: false
         }
-      },
-      
+      }
     ]
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: () =>  import('../page/home/index.vue'),
-  },
+    component: () => import('../page/home/index.vue')
+  }
 ];
 const router = createRouter({
   history: createWebHistory(),

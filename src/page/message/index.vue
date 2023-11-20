@@ -38,7 +38,7 @@ provide('sendMessage',addMessages )
 
 <style lang="scss" scoped>
 @media screen and (max-width: 600px) {
-  ::v-deep .input-container-box{
+  ::v-deep(.input-container-box){
       width: 1.3rem !important;
     }
   .message-container{

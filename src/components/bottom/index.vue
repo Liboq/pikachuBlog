@@ -20,7 +20,7 @@ import { getAllCategory } from '../../api/category';
         const result = await getAllCategory()
         if(result.status === 200){
             console.log('category',result.data);
-            categorys.value  = result.data.data
+            categorys.value  = result.data
         }
     }
     onMounted(()=>{
@@ -37,6 +37,7 @@ import { getAllCategory } from '../../api/category';
 }
     .bottom-container{
         width: 100%;
+        color: #fff;
         margin-top: 10px;
         padding-top: 20px;
         background-color: rgba(0,0,0,.3);

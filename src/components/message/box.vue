@@ -101,7 +101,7 @@ const sendMessage = () => {
     &-button {
     }
   }
-  ::v-deep .message-box-container-img .img-container  {
+  ::v-deep(.message-box-container-img .img-container)  {
        
         width: 2rem !important;
         height: 2rem !important;

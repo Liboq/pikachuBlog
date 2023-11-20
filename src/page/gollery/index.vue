@@ -21,7 +21,7 @@ const imgTop =
 const golleryList = ref([]);
 const getAllGollerys = async () => {
   const res = await getAllGollery();
-  golleryList.value = res.data.data;
+  golleryList.value = res.data;
   console.log(res);
 };
 onMounted(() => {

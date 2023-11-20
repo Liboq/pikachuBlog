@@ -12,6 +12,7 @@
     "amfe-flexible": "^2.2.1",
     "autoprefixer": "^10.4.13",
     "axios": "^1.1.3",
+    "draggable-vue-uploader": "^0.0.4",
     "highlight.js": "^11.7.0",
     "lodash": "^4.17.21",
     "markdown-it": "^13.0.1",

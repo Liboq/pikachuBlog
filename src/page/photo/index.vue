@@ -21,8 +21,8 @@ const description = ref('');
 const type = ref('');
 const getOneGollerys = async () => {
   const res = await getOneGollery({ _id });
-  const obj = res.data.data[0];
-  pathList.value = res.data.data[0].path;
+  const obj = res.data[0];
+  pathList.value = res.data[0].path;
   description.value = obj.description;
   type.value = obj.type;
   console.log(res);
